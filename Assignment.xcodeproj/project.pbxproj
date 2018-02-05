@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2392BE8E20290B5F00C6AAC2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2392BE8D20290B5E00C6AAC2 /* UserService.swift */; };
 		2392BE9120290E4000C6AAC2 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2392BE9020290E4000C6AAC2 /* NetworkService.swift */; };
+		239EF9D2202924C500E9FD6A /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239EF9D1202924C500E9FD6A /* Course.swift */; };
 		23D1C9812028E4D4004EE76B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C9802028E4D4004EE76B /* NetworkError.swift */; };
 		23D1C9842028F080004EE76B /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C9832028F080004EE76B /* TokenService.swift */; };
 		23D1C9862028F1F2004EE76B /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C9852028F1F2004EE76B /* GlobalFunctions.swift */; };
@@ -39,6 +40,7 @@
 		2167347BA69CDC4EF12ADBE7 /* Pods-Assignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment.release.xcconfig"; path = "Pods/Target Support Files/Pods-Assignment/Pods-Assignment.release.xcconfig"; sourceTree = "<group>"; };
 		2392BE8D20290B5E00C6AAC2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		2392BE9020290E4000C6AAC2 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		239EF9D1202924C500E9FD6A /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		23D1C9802028E4D4004EE76B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		23D1C9832028F080004EE76B /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
 		23D1C9852028F1F2004EE76B /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				23E534122028D26C0094633E /* User.swift */,
+				239EF9D1202924C500E9FD6A /* Course.swift */,
 			);
 			name = Realm;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2392BE9120290E4000C6AAC2 /* NetworkService.swift in Sources */,
+				239EF9D2202924C500E9FD6A /* Course.swift in Sources */,
 				23D1C9842028F080004EE76B /* TokenService.swift in Sources */,
 				8B3497B32027D2BC00AAEF98 /* Client.swift in Sources */,
 				2392BE8E20290B5F00C6AAC2 /* UserService.swift in Sources */,

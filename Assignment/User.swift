@@ -14,5 +14,10 @@ class User: Object {
   @objc dynamic var lastName: String = ""
   @objc dynamic var avatarUrl: String = ""
   @objc dynamic var contactUid: String = ""
-
+  var courses = List<Course>()
+  
+  override static func primaryKey() -> String? {
+    return "contactUid"
+  }
+  
 }
