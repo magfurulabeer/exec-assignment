@@ -6,10 +6,12 @@ target 'Assignment' do
   use_frameworks!
 
   # Pods for Assignment
-  pod 'Valet'
+  pod 'KeychainAccess'
   pod 'Moya'
   pod 'RealmSwift'
-  pod 'Freddy'
+  pod 'thenPromise'
+  pod 'Interstellar'
+  pod 'ObjectMapper'
   
   target 'AssignmentTests' do
     inherit! :search_paths

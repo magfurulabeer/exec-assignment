@@ -14,4 +14,12 @@ struct Constants {
   struct Keys {
     static let apiPartnerToken = "58YVS0VsOB7fNTVSNzArhg"
   }
+  
+  struct Params {
+    static let partnerToken = "X-Partner-Token"
+    static let userToken = "X-User-Token"
+    static let userEmail = "X-User-Email"
+    static let userPassword = "X-User-Password"
+  }
+  
 }

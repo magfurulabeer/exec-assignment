@@ -8,7 +8,8 @@
 
 import UIKit
 import Moya
-import Freddy
+import KeychainAccess
+import then
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,38 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(item, separator: separator, terminator: terminator)
       }
     }
+    let tokenService = TokenService()
+    let userService = UserService()
+    let keychain = Keychain(service: Bundle.main.bundleIdentifier!)
     
-    let provider = MoyaProvider<ExecOnlineAPI>(plugins: [NetworkLoggerPlugin(verbose: true, cURL: true, output: reversedPrint, responseDataFormatter: nil)])
-    provider.request(.requestToken(email: "abeer@execonline.com", password: "test12345")) { result in
-      
-      switch result {
-      case .success(let response):
-        let data = response.data
-        print("Successfully recieved token with \(response.statusCode) code.")
-        
-        do {
-          let json = try JSON(data: data)
-          
-//          let token = try json.getString(at: "token")
-          print("*************")
-          print(json)
-          print("*************")
-        } catch {
-          print("Failed to parse JSON")
-        }
-        
-        return
-      case .failure(let error):
-        print(error.errorDescription)
-        print(error.failureReason)
-        print(error.localizedDescription)
-        fatalError("Error when requesting User Token")
-      }
-      
-
-
+    tokenService
+      .getToken(email: "abeer@execonline.com", password: "test12345")
+      .then(userService.getUser)
     
-    }
     
     return true
   }
