@@ -14,14 +14,14 @@ import RealmSwift
 class NetworkService {
   var client: MoyaProvider<ExecOnlineAPI>
   var keychain: Keychain
-  var realm: Realm
+//  var realm: Realm
   
   init(client: MoyaProvider<ExecOnlineAPI> = MoyaProvider<ExecOnlineAPI>(plugins: [moyaPlugin]),
-       keychain: Keychain = Keychain(service: Bundle.main.bundleIdentifier!),
-       realm: Realm = try! Realm()) {
+       keychain: Keychain = Keychain(service: Bundle.main.bundleIdentifier!)) {
+//       realm: Realm = try! Realm()) {
     self.client = client
     self.keychain = keychain
-    self.realm = realm
+//    self.realm = realm
   }
 }
 

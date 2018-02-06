@@ -25,7 +25,12 @@ enum ExecOnlineAPI {
 
 // MARK: - TargetType Protocol Implementation
 extension ExecOnlineAPI: TargetType {
-  var baseURL: URL { return URL(string: "https://platform.staging.execonline.com/api")! }
+  var baseURL: URL {
+    guard let urlString = ProcessInfo.processInfo.environment[Constants.Params.baseUrl] else {
+      fatalError("Invalid Base Url for API!")
+    }
+    return URL(string: urlString)!
+  }
   
   var path: String {
     switch self {
@@ -78,20 +83,20 @@ extension ExecOnlineAPI: TargetType {
     case .requestToken(let credentials):
       return ["Content-type": "application/json",
               "Accept": "application/json",
-              Constants.Params.partnerToken: "58YVS0VsOB7fNTVSNzArhg",
+              Constants.Params.partnerToken: Constants.Keys.apiPartnerToken,
               Constants.Params.userEmail: credentials.email,
               Constants.Params.userPassword: credentials.password
       ]
     case .getUser(let userToken):
       return ["Content-type": "application/json",
               "Accept": "application/json",
-              Constants.Params.partnerToken: "58YVS0VsOB7fNTVSNzArhg",
+              Constants.Params.partnerToken: Constants.Keys.apiPartnerToken,
               Constants.Params.userToken: userToken
       ]
     default:
       return ["Content-type": "application/json",
               "Accept": "application/json",
-              Constants.Params.partnerToken: "58YVS0VsOB7fNTVSNzArhg"
+              Constants.Params.partnerToken: Constants.Keys.apiPartnerToken
       ]
     }
   }

@@ -28,6 +28,6 @@ class Course: Object {
   }
   
   override static func primaryKey() -> String? {
-    return "contactUid"
+    return "id"
   }
 }

@@ -6,13 +6,13 @@
 //  Copyright © 2018 ExecOnline. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // Put into env variable
 
 struct Constants {
   struct Keys {
-    static let apiPartnerToken = "58YVS0VsOB7fNTVSNzArhg"
+    static let apiPartnerToken = ProcessInfo.processInfo.environment[Params.partnerToken] ?? "NULL"
   }
   
   struct Params {
@@ -20,6 +20,11 @@ struct Constants {
     static let userToken = "X-User-Token"
     static let userEmail = "X-User-Email"
     static let userPassword = "X-User-Password"
+    static let baseUrl = "X-Base-Url"
   }
   
+  struct Colors {
+    static let red = UIColor.rgb(219,55,50)
+    static let darkRed = UIColor.rgb(164,49,51)
+  }
 }

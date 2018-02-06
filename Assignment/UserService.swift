@@ -11,11 +11,14 @@ import then
 import Moya
 import KeychainAccess
 import RealmSwift
+import ObjectMapper
+
+typealias JSON = [String: Any]
 
 class UserService: NetworkService {
   
   // TODO: This promise should return a User object
-  func getUser(userToken: String) -> Promise<Data> {
+  func getUser(userToken: String) -> Promise<User> {
     return Promise { [weak self] resolve, reject in
       guard let this = self else { fatalError() }
       let target = ExecOnlineAPI.getUser(userToken: userToken)
@@ -24,13 +27,16 @@ class UserService: NetworkService {
         switch result {
         case .success(let response):
           do {
-            guard let json = try JSONSerialization.jsonObject(with: response.data, options: [.mutableContainers]) as? [String: String] else {
-                reject(NetworkError.custom("Token could not be parsed"))
-                return
+            guard let json = try response.mapJSON() as? JSON, let user: User = Mapper<User>().map(JSON: json) else {
+              return
             }
             
-            print("JSON IS\n\n\n", json)
-            resolve(response.data)
+            let realm = try Realm()
+            try realm.write {
+              realm.add(user)
+            }
+            
+            resolve(user)
           } catch let err {
             reject(err)
           }
