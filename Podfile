@@ -10,7 +10,7 @@ target 'Assignment' do
   pod 'Moya'
   pod 'RealmSwift'
   pod 'thenPromise'
-  pod 'Interstellar' # Marked for removal
+  pod 'Bond'
   pod 'ObjectMapper'
   
   target 'AssignmentTests' do

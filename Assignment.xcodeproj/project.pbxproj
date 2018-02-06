@@ -14,6 +14,11 @@
 		239EF9D620293FD000E9FD6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239EF9D520293FD000E9FD6A /* LoginViewController.swift */; };
 		239EF9D8202945CD00E9FD6A /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239EF9D7202945CD00E9FD6A /* App.storyboard */; };
 		239EF9DA2029466800E9FD6A /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239EF9D92029466800E9FD6A /* CourseViewController.swift */; };
+		239EF9DE20294E9300E9FD6A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239EF9DD20294E9300E9FD6A /* LoginViewModel.swift */; };
+		23A21DA22029768A00525C8D /* LectureSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DA12029768A00525C8D /* LectureSegment.swift */; };
+		23A21DA42029774500525C8D /* LectureFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DA32029774500525C8D /* LectureFile.swift */; };
+		23A21DA620297BF500525C8D /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DA520297BF500525C8D /* Slide.swift */; };
+		23B05B7D2029638C00F95ED3 /* CourseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B05B7C2029638C00F95ED3 /* CourseService.swift */; };
 		23D1C9812028E4D4004EE76B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C9802028E4D4004EE76B /* NetworkError.swift */; };
 		23D1C9842028F080004EE76B /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C9832028F080004EE76B /* TokenService.swift */; };
 		23D1C9862028F1F2004EE76B /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C9852028F1F2004EE76B /* GlobalFunctions.swift */; };
@@ -48,6 +53,11 @@
 		239EF9D520293FD000E9FD6A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		239EF9D7202945CD00E9FD6A /* App.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = App.storyboard; sourceTree = "<group>"; };
 		239EF9D92029466800E9FD6A /* CourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
+		239EF9DD20294E9300E9FD6A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		23A21DA12029768A00525C8D /* LectureSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSegment.swift; sourceTree = "<group>"; };
+		23A21DA32029774500525C8D /* LectureFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureFile.swift; sourceTree = "<group>"; };
+		23A21DA520297BF500525C8D /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		23B05B7C2029638C00F95ED3 /* CourseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseService.swift; sourceTree = "<group>"; };
 		23D1C9802028E4D4004EE76B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		23D1C9832028F080004EE76B /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
 		23D1C9852028F1F2004EE76B /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
@@ -90,6 +100,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		239EF9DB20294E7D00E9FD6A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				239EF9DC20294E8800E9FD6A /* View Models */,
+				239EF9D520293FD000E9FD6A /* LoginViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		239EF9DC20294E8800E9FD6A /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				239EF9DD20294E9300E9FD6A /* LoginViewModel.swift */,
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
+		239EF9DF202952E600E9FD6A /* Application Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				8BA5EF4D2027CC9000FE4389 /* AppDelegate.swift */,
+			);
+			name = "Application Delegate";
+			sourceTree = "<group>";
+		};
+		239EF9E0202952F900E9FD6A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		239EF9E12029532500E9FD6A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8BA5EF512027CC9000FE4389 /* Login.storyboard */,
+				239EF9D7202945CD00E9FD6A /* App.storyboard */,
+				8BA5EF562027CC9000FE4389 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		23D1C97F2028E4B9004EE76B /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +150,7 @@
 				2392BE9020290E4000C6AAC2 /* NetworkService.swift */,
 				23D1C9832028F080004EE76B /* TokenService.swift */,
 				2392BE8D20290B5E00C6AAC2 /* UserService.swift */,
+				23B05B7C2029638C00F95ED3 /* CourseService.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -107,6 +160,9 @@
 			children = (
 				23E534122028D26C0094633E /* User.swift */,
 				239EF9D1202924C500E9FD6A /* Course.swift */,
+				23A21DA12029768A00525C8D /* LectureSegment.swift */,
+				23A21DA32029774500525C8D /* LectureFile.swift */,
+				23A21DA520297BF500525C8D /* Slide.swift */,
 			);
 			name = Realm;
 			sourceTree = "<group>";
@@ -130,7 +186,7 @@
 		8B3497B52027D42B00AAEF98 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				239EF9D520293FD000E9FD6A /* LoginViewController.swift */,
+				239EF9DB20294E7D00E9FD6A /* Login */,
 				239EF9D92029466800E9FD6A /* CourseViewController.swift */,
 			);
 			name = "View Controllers";
@@ -149,10 +205,7 @@
 		8B3497B72027DD7300AAEF98 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8BA5EF512027CC9000FE4389 /* Login.storyboard */,
-				239EF9D7202945CD00E9FD6A /* App.storyboard */,
 				8BA5EF542027CC9000FE4389 /* Assets.xcassets */,
-				8BA5EF562027CC9000FE4389 /* LaunchScreen.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -180,12 +233,14 @@
 		8BA5EF4C2027CC9000FE4389 /* Assignment */ = {
 			isa = PBXGroup;
 			children = (
-				8BA5EF4D2027CC9000FE4389 /* AppDelegate.swift */,
+				239EF9DF202952E600E9FD6A /* Application Delegate */,
 				8B3497B62027DD6800AAEF98 /* Helpers */,
 				8B3497B42027D42700AAEF98 /* Models */,
 				8B3497B12027D21A00AAEF98 /* Services */,
+				239EF9E12029532500E9FD6A /* Storyboards */,
 				8B3497B72027DD7300AAEF98 /* Resources */,
 				8B3497B52027D42B00AAEF98 /* View Controllers */,
+				239EF9E0202952F900E9FD6A /* Supporting Files */,
 				8BA5EF592027CC9000FE4389 /* Info.plist */,
 			);
 			path = Assignment;
@@ -404,10 +459,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Assignment/Pods-Assignment-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Interstellar/Interstellar.framework",
+				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
+				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -416,10 +473,12 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Interstellar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
@@ -452,17 +511,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23A21DA42029774500525C8D /* LectureFile.swift in Sources */,
 				239EF9DA2029466800E9FD6A /* CourseViewController.swift in Sources */,
 				2392BE9120290E4000C6AAC2 /* NetworkService.swift in Sources */,
 				239EF9D2202924C500E9FD6A /* Course.swift in Sources */,
 				23D1C9842028F080004EE76B /* TokenService.swift in Sources */,
 				8B3497B32027D2BC00AAEF98 /* Client.swift in Sources */,
 				2392BE8E20290B5F00C6AAC2 /* UserService.swift in Sources */,
+				23A21DA22029768A00525C8D /* LectureSegment.swift in Sources */,
+				239EF9DE20294E9300E9FD6A /* LoginViewModel.swift in Sources */,
 				23D1C9862028F1F2004EE76B /* GlobalFunctions.swift in Sources */,
+				23B05B7D2029638C00F95ED3 /* CourseService.swift in Sources */,
 				239EF9D420292A4B00E9FD6A /* UIColor+Extensions.swift in Sources */,
 				8BA5EF4E2027CC9000FE4389 /* AppDelegate.swift in Sources */,
 				23D1C9812028E4D4004EE76B /* NetworkError.swift in Sources */,
 				23E534132028D26C0094633E /* User.swift in Sources */,
+				23A21DA620297BF500525C8D /* Slide.swift in Sources */,
 				239EF9D620293FD000E9FD6A /* LoginViewController.swift in Sources */,
 				8BA5EF6E2027CCBB00FE4389 /* Constants.swift in Sources */,
 			);

@@ -8,8 +8,11 @@
 
 import Foundation
 import RealmSwift
+import ObjectMapper
 
-class Course: Object {
+class Course: Object, Mappable {
+  
+  // MARK: - Properties
   @objc dynamic var id: Int = 0
   @objc dynamic var progress: Int = 0
   @objc dynamic var currentSegment: Int = 0
@@ -29,5 +32,22 @@ class Course: Object {
   
   override static func primaryKey() -> String? {
     return "id"
+  }
+  
+  // MARK: - Initializers
+  required convenience init?(map: Map) {
+    self.init()
+  }
+  
+  // MARK: - Mapping
+  
+  func mapping(map: Map) {
+    id <- map["id"]
+    progress <- map["progress"]
+    currentSegment <- map["currentSegment"]
+    currentModule <- map["currentModule"]
+    studentStatus <- map["student_status"]
+    canSkipAround <- map["can_skip_around"]
+    appCompatible <- map["app_compatible"]
   }
 }

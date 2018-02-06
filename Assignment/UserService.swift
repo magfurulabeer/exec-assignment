@@ -13,11 +13,8 @@ import KeychainAccess
 import RealmSwift
 import ObjectMapper
 
-typealias JSON = [String: Any]
-
 class UserService: NetworkService {
   
-  // TODO: This promise should return a User object
   func getUser(userToken: String) -> Promise<User> {
     return Promise { [weak self] resolve, reject in
       guard let this = self else { fatalError() }
@@ -33,8 +30,9 @@ class UserService: NetworkService {
             
             let realm = try Realm()
             try realm.write {
-              realm.add(user)
+              realm.add(user, update: true)
             }
+            
             
             resolve(user)
           } catch let err {
@@ -47,4 +45,42 @@ class UserService: NetworkService {
       })
     }
   }
+  
+  func getUserCourses(userToken: String) -> Promise<Course> {
+    return Promise { [weak self] resolve, reject in
+      guard let this = self else { fatalError() }
+      let target = ExecOnlineAPI.getUserCourses(userToken: userToken)
+      print("Promises 12345")
+      this.client.request(target, completion: { result in
+        switch result {
+        case .success(let response):
+          do {
+            guard let json = try response.mapJSON() as? [JSON] else {
+              reject(NetworkError.custom("No courses retrieved"))
+              return
+            }
+            
+            let courses: [Course] = Mapper<Course>().mapArray(JSONArray: json)
+            guard courses.count > 0 else {
+              reject(NetworkError.custom("No courses retrieved"))
+              return
+            }
+
+            let realm = try Realm()
+            try realm.write {
+              realm.add(courses, update: true)
+            }
+
+            resolve(courses.first ?? Course())
+          } catch let err {
+            reject(err)
+          }
+          
+        case .failure(let error):
+          reject(error)
+        }
+      })
+    }
+  }
+  
 }

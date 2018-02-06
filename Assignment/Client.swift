@@ -87,7 +87,7 @@ extension ExecOnlineAPI: TargetType {
               Constants.Params.userEmail: credentials.email,
               Constants.Params.userPassword: credentials.password
       ]
-    case .getUser(let userToken):
+    case .getUser(let userToken), .getUserCourses(let userToken):
       return ["Content-type": "application/json",
               "Accept": "application/json",
               Constants.Params.partnerToken: Constants.Keys.apiPartnerToken,

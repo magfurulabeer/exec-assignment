@@ -11,6 +11,8 @@ import Moya
 import KeychainAccess
 import RealmSwift
 
+typealias JSON = [String: Any]
+
 class NetworkService {
   var client: MoyaProvider<ExecOnlineAPI>
   var keychain: Keychain

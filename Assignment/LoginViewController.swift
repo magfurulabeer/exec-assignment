@@ -15,12 +15,22 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var loginButton: UIButton!
   let tokenService = TokenService()
   let userService = UserService()
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
+  var viewModel = LoginViewModel() {
+    didSet {
+      updateView()
+    }
   }
   
+  // MARK: - Lifecycle Methods
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    updateView()
+
+    emailTextField.delegate = self
+    passwordTextField.delegate = self
+  }
+  
+  // MARK: - IBActions
   @IBAction func loginButtonTapped(_ sender: UIButton) {
     tokenService
       .getToken(email: emailTextField.text!, password: passwordTextField.text!)
@@ -32,12 +42,33 @@ class LoginViewController: UIViewController {
         }
     }
   }
+}
+
+extension LoginViewController {
+  func updateView() {
+    print("UPDATE VIEW")
+    loginButton.isEnabled = viewModel.buttonIsEnabled
+    loginButton.backgroundColor = viewModel.buttonIsEnabled ? Constants.Colors.darkRed : Constants.Colors.darkRed.withAlphaComponent(0.7)
+  }
   
   func transitionToCourse() {
-    let storyboard = UIStoryboard(name: "App", bundle: Bundle.main)
-    let viewController = storyboard.instantiateInitialViewController()!
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    appDelegate.window!.rootViewController = viewController
-    appDelegate.window!.makeKeyAndVisible()
+    OperationQueue.main.addOperation {
+      let storyboard = UIStoryboard(name: "App", bundle: Bundle.main)
+      let viewController = storyboard.instantiateInitialViewController()!
+      let appDelegate = UIApplication.shared.delegate as! AppDelegate
+      appDelegate.window!.rootViewController = viewController
+      appDelegate.window!.makeKeyAndVisible()
+    }
+  }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    print("DID END EDITING")
+    if textField == self.emailTextField {
+      viewModel.email = emailTextField.text ?? ""
+    } else {
+      viewModel.password = passwordTextField.text ?? ""
+    }
   }
 }
