@@ -40,43 +40,45 @@ class LectureSegment: Object, Mappable {
     name <- map["name"]
     slideShow <- map["slide_show"]
     videoUrlString <- map["video_url"]
-    
+
     // Lecture Files
-    let lectureFilesData = map.JSON["lecture_files"] as! [JSON] // TODO: Remove forced cast
-    
-    for data in lectureFilesData {
-      if let lectureFile = Mapper<LectureFile>().map(JSON: data) {
-        do {
-          let realm = try Realm()
-          try realm.write {
-            realm.add(lectureFile, update: true)
+    if let lectureFilesData = map.JSON["lecture_files"] as? [JSON]  {
+      for data in lectureFilesData {
+        if let lectureFile = Mapper<LectureFile>().map(JSON: data) {
+          do {
+            let realm = try Realm()
+            try realm.write {
+              realm.add(lectureFile, update: true)
+            }
+            
+            if !lectureFiles.contains(lectureFile) {
+              lectureFiles.append(lectureFile)
+            }
+          } catch let err {
+            // Implement error catching
           }
-          
-          if !lectureFiles.contains(lectureFile) {
-            lectureFiles.append(lectureFile)
-          }
-        } catch let err {
-          // Implement error catching
         }
       }
     }
     
-    // Slides
-    let slidesData = map.JSON["slides"] as! [JSON] // TODO: Remove forced cast
     
-    for data in slidesData {
-      if let slide = Mapper<Slide>().map(JSON: data) {
-        do {
-          let realm = try Realm()
-          try realm.write {
-            realm.add(slide, update: true)
+    
+    // Slides
+    if let slidesData = map.JSON["slides"] as? [JSON] {
+      for data in slidesData {
+        if let slide = Mapper<Slide>().map(JSON: data) {
+          do {
+            let realm = try Realm()
+            try realm.write {
+              realm.add(slide, update: true)
+            }
+            
+            if !slides.contains(slide) {
+              slides.append(slide)
+            }
+          } catch let err {
+            // Implement error catching
           }
-          
-          if !slides.contains(slide) {
-            slides.append(slide)
-          }
-        } catch let err {
-          // Implement error catching
         }
       }
     }

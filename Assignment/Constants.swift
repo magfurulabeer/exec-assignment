@@ -21,6 +21,7 @@ struct Constants {
     static let userEmail = "X-User-Email"
     static let userPassword = "X-User-Password"
     static let baseUrl = "X-Base-Url"
+    static let id = "id"
   }
   
   struct Colors {

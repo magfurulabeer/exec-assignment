@@ -8,6 +8,7 @@
 
 import Foundation
 import Moya
+import KeychainAccess
 
 // MARK: - Target
 enum ExecOnlineAPI {
@@ -19,7 +20,7 @@ enum ExecOnlineAPI {
   case getUserCourses(userToken: String)
   
   // MARK: - Courses
-  case getCourse(id: String)
+  case getCourse(id: Int)
   case getCourseLectureSegments(courseId: String, id: String)
 }
 
@@ -56,8 +57,13 @@ extension ExecOnlineAPI: TargetType {
     }
   }
   
+  // Obsolete. Use task?
   var parameters: [String : Any]? {
-    return nil
+    switch self {
+
+    default:
+      return nil
+    }
   }
   
   var parameterEncoding: ParameterEncoding {
@@ -66,6 +72,8 @@ extension ExecOnlineAPI: TargetType {
   
   var task: Task {
     switch self {
+//    case .getCourse(let id):
+//      return Task.requestParameters(parameters: ["id": id], encoding: URLEncoding.)
     default:
       return Task.requestPlain
     }
@@ -78,7 +86,11 @@ extension ExecOnlineAPI: TargetType {
     }
   }
   
+  // TODO: DRY this out
   var headers: [String: String]? {
+    let keychain = Keychain(service: Bundle.main.bundleIdentifier!)
+    let token = keychain[Constants.Params.userToken] ?? "NULL"
+    
     switch self {
     case .requestToken(let credentials):
       return ["Content-type": "application/json",
@@ -92,6 +104,12 @@ extension ExecOnlineAPI: TargetType {
               "Accept": "application/json",
               Constants.Params.partnerToken: Constants.Keys.apiPartnerToken,
               Constants.Params.userToken: userToken
+      ]
+    case .getCourse(_):
+      return ["Content-type": "application/json",
+              "Accept": "application/json",
+              Constants.Params.partnerToken: Constants.Keys.apiPartnerToken,
+              Constants.Params.userToken: token
       ]
     default:
       return ["Content-type": "application/json",
