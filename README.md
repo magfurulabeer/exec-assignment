@@ -58,3 +58,9 @@ Every View Model is injected with a Coordinator and occasionally injected with a
 ## Coordinator
 The Coordinator handles the navigation of the app. Each View Controller and View Model pair is separated into their own Scene. The Coordinator can then push, pop, or change root to the proper scene (No modals in this app). The Coordinator is owned by the AppDelegate. References to it are passed to every View Model instantiated. 
 
+## Networking
+Networking is separated into 3 components: The Client, The Services, The Managers. 
+
+### Client
+The Client is the main component of the Networking Layer. The Client will be used to make the actual network calls. The Client in this app is a Moya Provider. Moya has a clean and consistent interface for creating networking layers.
+
