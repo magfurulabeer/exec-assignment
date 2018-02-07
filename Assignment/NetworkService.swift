@@ -18,14 +18,11 @@ typealias JSON = [String: Any]
 class NetworkService {
   var client: MoyaProvider<ExecOnlineAPI>
   var keychain: Keychain
-//  var realm: Realm
   
   init(client: MoyaProvider<ExecOnlineAPI> = MoyaProvider<ExecOnlineAPI>(plugins: [moyaPlugin]),
        keychain: Keychain = Keychain(service: Bundle.main.bundleIdentifier!)) {
-//       realm: Realm = try! Realm()) {
     self.client = client
     self.keychain = keychain
-//    self.realm = realm
   }
     
   func request(target: ExecOnlineAPI) -> Promise<JSON> {
@@ -86,7 +83,7 @@ class NetworkService {
         switch result {
         case .success(let response):
           do {
-            guard let json = try response.mapJSON() as? JSON, let object: T = Mapper<T>().map(JSON: json)  else {
+            guard let json = try response.mapJSON() as? JSON, let object: T = Mapper<T>().map(JSON: json) else {
               reject(NetworkError.custom("Could not parse JSON"))
               return
             }

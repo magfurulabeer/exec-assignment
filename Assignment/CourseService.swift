@@ -21,6 +21,7 @@ class CourseService: NetworkService {
     return request(target: target)
   }
   
+  // TODO: Rename. Should not be plural.
   func getCourseLectureSegments(courseId: Int, id: Int) -> Promise<LectureSegment> {
     let target = ExecOnlineAPI.getCourseLectureSegments(courseId: courseId, id: id)
     return requestThenMap(target: target)

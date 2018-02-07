@@ -10,11 +10,16 @@ import UIKit
 import RealmSwift
 import then
 
-class CourseViewModel {
+class CourseViewModel: ViewModel {
   // MARK: Public Variables
+  var coordinator: Coordinator
+  var update: () -> Void
   
-  var update: () -> Void = {}
-  
+  init(coordinator: Coordinator, updateFunction: @escaping () -> Void) {
+    self.coordinator = coordinator
+    self.update = updateFunction
+  }
+
   var title: String {
     return course.title
   }
@@ -27,25 +32,32 @@ class CourseViewModel {
     return "\(course.startOn) - \(course.endOn)"
   }
   
-  var headerImage: UIImage {
-    return UIImage()
-    // TODO: Use Kingfisher
-//    guard let url = URL(string: course.institutionLogo),
-//      let image = UIImage(
+  var headerImage: URL? {
+    return course.institutionLogoUrl
   }
   
+  var navbarTitle: String {
+    return user.firstName.isEmpty ? "" : "Welcome Back, \(user.firstName)!"
+  }
 
   
   // MARK: - Private Variables
   fileprivate let courseManager = CourseManager()
   fileprivate var persistedCourses = Realm.shared.objects(Course.self)
-  var course: Course {
+  fileprivate var users = Realm.shared.objects(User.self)
+  
+  fileprivate var user: User {
+    return users.first ?? User()
+  }
+  
+  fileprivate var course: Course {
     return persistedCourses.first ?? Course()
   }
   
-  var modules: List<Module> {
+  fileprivate var modules: List<Module> {
     return course.courseModules.filter { $0.segments.count > 0 }
   }
+  
   
   // MARK: - Public Methods
 
@@ -57,13 +69,19 @@ class CourseViewModel {
     }
   }
 
-//  private func transitionToCourseScreen() {
-//    let storyboard = UIStoryboard(name: "App", bundle: Bundle.main)
-//    let viewController = storyboard.instantiateInitialViewController()!
-//    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//    appDelegate.window!.rootViewController = viewController
-//    appDelegate.window!.makeKeyAndVisible()
-//  }
+  func didSelectLectureSegment(module: Int, Index: Int) {
+    let courseId = course.id
+    let selectedSegment = segment(module: module, index: Index)
+    let id = selectedSegment.id
+    transitionToLectureScreen(courseId: courseId, id: id)
+  }
+  
+  private func transitionToLectureScreen(courseId: Int, id: Int) {
+    OperationQueue.main.addOperation { [weak self] in
+      guard let this = self else { fatalError() }
+      this.coordinator.push(scene: Scene.lecture(courseId: courseId, id: id))
+    }
+  }
 }
 
 // MARK: - UITableView Datasource
@@ -75,7 +93,6 @@ extension CourseViewModel {
   
   func numberOfSegments(module: Int) -> Int {
     return modules[module].segments.count
-    //    return course.courseModules[module].segments.count
   }
   
   func segment(module: Int, index: Int) -> LectureSegment {

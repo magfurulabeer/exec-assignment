@@ -35,6 +35,10 @@ class Course: Object, Mappable {
     return "id"
   }
   
+  var institutionLogoUrl: URL? {
+    return URL(string: institutionLogo)
+  }
+  
   var professorName: String {
     return "\(professorFirstName) \(professorLastName)"
   }
@@ -48,18 +52,19 @@ class Course: Object, Mappable {
   
   func mapping(map: Map) {
     print(">> Course - \(map.JSON["label"] as? String ?? "--Failed--")")
-    id              <- map["id"]
-    progress        <- map["progress"]
-    currentSegment  <- map["currentSegment"]
-    currentModule   <- map["currentModule"]
-    studentStatus   <- map["student_status"]
-    canSkipAround   <- map["can_skip_around"]
-    appCompatible   <- map["app_compatible"]
-    startOn         <- map["start_on"]
-    endOn           <- map["end_on"]
-    title           <- map["title"]
-    courseModules   <- (map["course_modules"], ListTransform<Module>())
-    professorFirstName <- map["professors.0.first_name"]
-    professorLastName <- map["professors.0.last_name"]
+    id                  <- map["id"]
+    progress            <- map["progress"]
+    currentSegment      <- map["currentSegment"]
+    currentModule       <- map["currentModule"]
+    studentStatus       <- map["student_status"]
+    canSkipAround       <- map["can_skip_around"]
+    appCompatible       <- map["app_compatible"]
+    startOn             <- map["start_on"]
+    endOn               <- map["end_on"]
+    title               <- map["title"]
+    courseModules       <- (map["course_modules"], ListTransform<Module>())
+    professorFirstName  <- map["professors.0.first_name"]
+    professorLastName   <- map["professors.0.last_name"]
+    institutionLogo     <- map["institution_logo"]
   } 
 }

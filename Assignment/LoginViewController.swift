@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var loginButton: UIButton!
   
   // MARK: - Properties
-  var viewModel = LoginViewModel() {
+  var viewModel: LoginViewModel! {
     didSet {
       updateView()
     }
@@ -46,6 +46,7 @@ extension LoginViewController {
 // MARK: Helper Functions
 extension LoginViewController {
   func updateView() {
+    guard loginButton != nil else { return } // If called before uiviewcontroller lays out subviews
     loginButton.isEnabled = viewModel.buttonIsEnabled
     loginButton.backgroundColor = viewModel.buttonIsEnabled ? Constants.Colors.darkRed : Constants.Colors.darkRed.withAlphaComponent(0.8)
   }

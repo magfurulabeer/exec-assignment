@@ -13,7 +13,7 @@ target 'Assignment' do
   pod 'Bond'
   pod 'ObjectMapper'
   pod "ObjectMapper+Realm"
-
+  pod 'Kingfisher'
   
   target 'AssignmentTests' do
     inherit! :search_paths

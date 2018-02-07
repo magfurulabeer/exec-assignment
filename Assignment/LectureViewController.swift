@@ -8,36 +8,45 @@
 
 import UIKit
 import AVKit
+import Kingfisher
 
 class LectureViewController: UIViewController {
 
   @IBOutlet weak var playerView: PlayerView!
   @IBOutlet weak var slideImageView: UIImageView!
 
-  let viewModel = LectureViewModel()
-  
-  override var prefersStatusBarHidden: Bool { return true }
-  
+  var viewModel: LectureViewModel!
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    playerView.player = AVPlayer(url: URL(string: "https://staging-video.execonline.com/80/mobile.mp4")!)
-    viewModel.player = playerView.player
-    viewModel.player?.play()
     viewModel.update = updateView
-
+    viewModel.retrieveLectureSegment()
     playerView.addTapGestureRecognizer(action: viewModel.pauseOnTap)
-
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    viewModel.deinitialize()
+    playerView = PlayerView()
   }
 
   func updateView() {
+    guard playerView != nil else { return } // If called before uiviewcontroller lays out subviews
+
     OperationQueue.main.addOperation { [weak self] in
       guard let this = self else { return }
       
-//      this.titleLabel.text = this.viewModel.title
-//      this.professorLabel.text = this.viewModel.professor
-//      this.dateLabel.text = this.viewModel.dateRange
-//      this.tableView.reloadData()
+      if let url = this.viewModel.slideImageUrl {
+        this.slideImageView.kf.setImage(with: url)
+      }
+      
+      this.title = this.viewModel.title
+      guard let url = this.viewModel.videoUrl else { return }
+      if let asset = this.viewModel.player?.currentItem?.asset as? AVURLAsset, asset.url == url { return }
+      
+      this.playerView.player = AVPlayer(url: url)
+      this.viewModel.player = this.playerView.player
+      this.viewModel.player?.play()
     }
   }
 }

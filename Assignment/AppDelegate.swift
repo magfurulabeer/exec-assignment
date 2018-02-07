@@ -16,7 +16,7 @@ import RealmSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-
+  var coordinator: Coordinator!
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
@@ -36,25 +36,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     if window == nil {
       window = UIWindow(frame: UIScreen.main.bounds)
+      window!.tintColor = UIColor.white
+
     }
+    
+    coordinator = Coordinator(window: window!)
     
     let realm = try! Realm()
     if realm.objects(User.self).first != nil {
-      
-      if window == nil {
-        window = UIWindow(frame: UIScreen.main.bounds)
-      }
-      
-      let storyboard = UIStoryboard(name: "App", bundle: Bundle.main)
-      let viewController = storyboard.instantiateInitialViewController()!
-      window!.rootViewController = viewController
-      window!.makeKeyAndVisible()
+      coordinator.root(scene: Scene.course)
+//      if window == nil {
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//      }
+//
+//      let storyboard = UIStoryboard(name: "App", bundle: Bundle.main)
+//      let viewController = storyboard.instantiateInitialViewController()!
+//      window!.rootViewController = viewController
+//      window!.makeKeyAndVisible()
     } else {
-      
-      let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
-      let viewController = storyboard.instantiateInitialViewController()!
-      window!.rootViewController = viewController
-      window!.makeKeyAndVisible()
+      coordinator.root(scene: Scene.login)
+//      let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+//      let viewController = storyboard.instantiateInitialViewController()!
+//      window!.rootViewController = viewController
+//      window!.makeKeyAndVisible()
     }
     
     return true

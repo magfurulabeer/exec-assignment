@@ -27,6 +27,9 @@
 		23A21DBF202A981C00525C8D /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DBE202A981C00525C8D /* PlayerView.swift */; };
 		23A21DC3202A9FD800525C8D /* LectureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DC2202A9FD800525C8D /* LectureViewModel.swift */; };
 		23A21DC5202AA15A00525C8D /* UIView+SelectorFreeGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DC4202AA15A00525C8D /* UIView+SelectorFreeGestures.swift */; };
+		23A21DC8202B34E000525C8D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DC7202B34E000525C8D /* Coordinator.swift */; };
+		23A21DCB202B39F500525C8D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DCA202B39F500525C8D /* ViewModel.swift */; };
+		23A21DCD202B3B6500525C8D /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DCC202B3B6500525C8D /* Scene.swift */; };
 		23B05B7D2029638C00F95ED3 /* CourseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B05B7C2029638C00F95ED3 /* CourseService.swift */; };
 		23D1C9812028E4D4004EE76B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C9802028E4D4004EE76B /* NetworkError.swift */; };
 		23D1C9842028F080004EE76B /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C9832028F080004EE76B /* TokenService.swift */; };
@@ -75,6 +78,9 @@
 		23A21DBE202A981C00525C8D /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		23A21DC2202A9FD800525C8D /* LectureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureViewModel.swift; sourceTree = "<group>"; };
 		23A21DC4202AA15A00525C8D /* UIView+SelectorFreeGestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SelectorFreeGestures.swift"; sourceTree = "<group>"; };
+		23A21DC7202B34E000525C8D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		23A21DCA202B39F500525C8D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		23A21DCC202B3B6500525C8D /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		23B05B7C2029638C00F95ED3 /* CourseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseService.swift; sourceTree = "<group>"; };
 		23D1C9802028E4D4004EE76B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		23D1C9832028F080004EE76B /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
@@ -208,6 +214,23 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		23A21DC6202B269A00525C8D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				23A21DC7202B34E000525C8D /* Coordinator.swift */,
+				23A21DCC202B3B6500525C8D /* Scene.swift */,
+			);
+			name = Coordinator;
+			sourceTree = "<group>";
+		};
+		23A21DC9202B39E800525C8D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				23A21DCA202B39F500525C8D /* ViewModel.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		23D1C97F2028E4B9004EE76B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,7 +315,9 @@
 		8BA5EF4C2027CC9000FE4389 /* Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				23A21DC9202B39E800525C8D /* Protocols */,
 				239EF9DF202952E600E9FD6A /* Application Delegate */,
+				23A21DC6202B269A00525C8D /* Coordinator */,
 				8B3497B62027DD6800AAEF98 /* Helpers */,
 				8B3497B42027D42700AAEF98 /* Models */,
 				23D1C97F2028E4B9004EE76B /* Networking */,
@@ -521,6 +546,7 @@
 				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
@@ -536,6 +562,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
@@ -574,10 +601,12 @@
 			files = (
 				23A21DA42029774500525C8D /* LectureFile.swift in Sources */,
 				23A21DBC202A96F100525C8D /* LectureViewController.swift in Sources */,
+				23A21DCD202B3B6500525C8D /* Scene.swift in Sources */,
 				2392BE9120290E4000C6AAC2 /* NetworkService.swift in Sources */,
 				239EF9D2202924C500E9FD6A /* Course.swift in Sources */,
 				23A21DAE202A2D1900525C8D /* CourseManager.swift in Sources */,
 				23D1C9842028F080004EE76B /* TokenService.swift in Sources */,
+				23A21DCB202B39F500525C8D /* ViewModel.swift in Sources */,
 				23A21DB7202A540C00525C8D /* Realm+Extensions.swift in Sources */,
 				8B3497B32027D2BC00AAEF98 /* Client.swift in Sources */,
 				23A21DBF202A981C00525C8D /* PlayerView.swift in Sources */,
@@ -592,6 +621,7 @@
 				23B05B7D2029638C00F95ED3 /* CourseService.swift in Sources */,
 				23A21DB2202A390500525C8D /* CourseViewController.swift in Sources */,
 				239EF9D420292A4B00E9FD6A /* UIColor+Extensions.swift in Sources */,
+				23A21DC8202B34E000525C8D /* Coordinator.swift in Sources */,
 				23A21DAB202A14C100525C8D /* AuthenticationManager.swift in Sources */,
 				8BA5EF4E2027CC9000FE4389 /* AppDelegate.swift in Sources */,
 				23D1C9812028E4D4004EE76B /* NetworkError.swift in Sources */,
