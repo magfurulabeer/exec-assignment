@@ -36,10 +36,15 @@ Many of the decisions made when architecting this app were based on the followin
 3. Ease of File Navigation
 - Extending the last point, when separated correctly with a solid system in place, it becomes significantly easier to find which file contains the desired code
 
-## Models
+## Model
 All the models in the app are Realm Objects and conform to the Mappable protocol. This means that it can easily be created given the proper JSON. The model properties were kept as faithful as possible to the recieved JSON (e.g. current_segment became currentSegment).
 1. User
 2. Course
 3. Module
 4. LectureSegment
 5. Slide
+
+## View
+The majority of the styling was done in Storyboard. The idea is that there would be multiple storyboards for multiple flows. Currently there are only 2: Login and App. If the App had a TabBar, this figure could have easily been 5 or 6. While the storyboards are being implemented, the actual loading of the View Controllers are done in the Coordinator.
+
+All View Controllers have an associated View Model that contains the state, interaction logic, and presentation logic. The View Model is injected into the View Controller in the Coordinator.
