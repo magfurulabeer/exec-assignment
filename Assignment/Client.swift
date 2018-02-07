@@ -105,16 +105,11 @@ extension ExecOnlineAPI: TargetType {
               Constants.Params.partnerToken: Constants.Keys.apiPartnerToken,
               Constants.Params.userToken: userToken
       ]
-    case .getCourse(_):
+    default:
       return ["Content-type": "application/json",
               "Accept": "application/json",
               Constants.Params.partnerToken: Constants.Keys.apiPartnerToken,
               Constants.Params.userToken: token
-      ]
-    default:
-      return ["Content-type": "application/json",
-              "Accept": "application/json",
-              Constants.Params.partnerToken: Constants.Keys.apiPartnerToken
       ]
     }
   }

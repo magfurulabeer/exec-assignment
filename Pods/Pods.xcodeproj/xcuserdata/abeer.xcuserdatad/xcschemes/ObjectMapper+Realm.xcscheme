@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6412935072F4CBDB2A06261E8CCF3E17"
-               BuildableName = "Pods_Assignment.framework"
-               BlueprintName = "Pods-Assignment"
+               BlueprintIdentifier = "1BECF98F5D80315F4CA333AB7B4CB512"
+               BuildableName = "ObjectMapper_Realm.framework"
+               BlueprintName = "ObjectMapper+Realm"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6412935072F4CBDB2A06261E8CCF3E17"
-            BuildableName = "Pods_Assignment.framework"
-            BlueprintName = "Pods-Assignment"
+            BlueprintIdentifier = "1BECF98F5D80315F4CA333AB7B4CB512"
+            BuildableName = "ObjectMapper_Realm.framework"
+            BlueprintName = "ObjectMapper+Realm"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

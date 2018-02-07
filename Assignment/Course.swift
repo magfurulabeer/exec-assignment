@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import ObjectMapper
+import ObjectMapper_Realm
 
 class Course: Object, Mappable {
   
@@ -24,19 +25,18 @@ class Course: Object, Mappable {
   @objc dynamic var studentStatus: String = ""
   @objc dynamic var canSkipAround: Bool = true
   @objc dynamic var appCompatible: Bool = true
-  var courseModules = List<Module>()
-  private var students = LinkingObjects(fromType: User.self, property: "courses")
+  // Note: I got lazy here
+  @objc dynamic var professorFirstName: String = ""
+  @objc dynamic var professorLastName: String = ""
 
-  var student: User? {
-    return students.first
-  }
-  
-  var sfStudentUid: String? {
-    return student?.contactUid
-  }
+  var courseModules = List<Module>()
   
   override static func primaryKey() -> String? {
     return "id"
+  }
+  
+  var professorName: String {
+    return "\(professorFirstName) \(professorLastName)"
   }
   
   // MARK: - Initializers
@@ -47,38 +47,19 @@ class Course: Object, Mappable {
   // MARK: - Mapping
   
   func mapping(map: Map) {
-    id <- map["id"]
-    progress <- map["progress"]
-    currentSegment <- map["currentSegment"]
-    currentModule <- map["currentModule"]
-    studentStatus <- map["student_status"]
-    canSkipAround <- map["can_skip_around"]
-    appCompatible <- map["app_compatible"]
-    startOn <- map["start_on"]
-    endOn <- map["end_on"]
-    title <- map["title"]
-
-    // Modules
-//    let modulesData = map.JSON["course_modules"] as! [JSON] // TODO: Remove forced cast
-//
-//    let modules = modulesData
-//      .map { Mapper<Module>().map(JSON: $0) ?? Module() }
-//      .filter { $0.id != 0 } // Check if id can be 0
-//
-//    do {
-//      let realm = try Realm()
-//      try realm.write {
-//        realm.add(modules, update: true)
-//
-//        let newModules = modules
-//          .filter { courseModules.contains($0) }
-//
-//        courseModules.append(objectsIn: newModules)
-//      }
-//    } catch let err {
-//      // Implement error catching
-//    }
-  }
-  
-  
+    print(">> Course - \(map.JSON["label"] as? String ?? "--Failed--")")
+    id              <- map["id"]
+    progress        <- map["progress"]
+    currentSegment  <- map["currentSegment"]
+    currentModule   <- map["currentModule"]
+    studentStatus   <- map["student_status"]
+    canSkipAround   <- map["can_skip_around"]
+    appCompatible   <- map["app_compatible"]
+    startOn         <- map["start_on"]
+    endOn           <- map["end_on"]
+    title           <- map["title"]
+    courseModules   <- (map["course_modules"], ListTransform<Module>())
+    professorFirstName <- map["professors.0.first_name"]
+    professorLastName <- map["professors.0.last_name"]
+  } 
 }

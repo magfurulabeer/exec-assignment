@@ -64,21 +64,5 @@ extension Realm {
       }
     }
   }
-  
-//  class func objects<T>(_ type: T.Type) -> Results<T> {
-//    OperationQueue.main.addOperation {
-//      var results =
-//      do {
-//        let realm = try Realm()
-//        let results = try realm.objects(type)
-//        return results
-//      } catch let error {
-//        fatalError(error.localizedDescription)
-//      }
-//      
-//      
-//    }
-//  }
-  
 }
 

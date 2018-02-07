@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import ObjectMapper
+import ObjectMapper_Realm
 
 class LectureSegment: Object, Mappable {
   
@@ -18,10 +19,10 @@ class LectureSegment: Object, Mappable {
   @objc dynamic var name: String = ""
   @objc dynamic var slideShow: String = ""
   @objc dynamic var videoUrlString: String = ""
+  @objc dynamic var lectureFileUrlString: String = ""
 
-  var lectureFiles = List<LectureFile>()
+  var lectureFiles = List<LectureFile>() // TODO: Marked for deletion
   var slides = List<Slide>()
-  var courses = List<Course>()
   
   override static func primaryKey() -> String? {
     return "id"
@@ -29,59 +30,30 @@ class LectureSegment: Object, Mappable {
   
   // MARK: - Initializers
   required convenience init?(map: Map) {
+    // Only take lecture segments
+    if map.JSON["type"] as? String != "ContentLibrary::LectureSegment" {
+      print("Segment is not Lecture. It is \(map.JSON["type"] as? String ?? "--Failed--")")
+      return nil
+    }
     self.init()
   }
   
   // MARK: - Mapping
   
   func mapping(map: Map) {
+    print(">> Segment - \(map.JSON["label"] as? String ?? "--Failed--")")
     id <- map["id"]
     label <- map["label"]
     name <- map["name"]
     slideShow <- map["slide_show"]
     videoUrlString <- map["video_url"]
-
-    // Lecture Files
-    if let lectureFilesData = map.JSON["lecture_files"] as? [JSON]  {
-      for data in lectureFilesData {
-        if let lectureFile = Mapper<LectureFile>().map(JSON: data) {
-          do {
-            let realm = try Realm()
-            try realm.write {
-              realm.add(lectureFile, update: true)
-            }
-            
-            if !lectureFiles.contains(lectureFile) {
-              lectureFiles.append(lectureFile)
-            }
-          } catch let err {
-            // Implement error catching
-          }
-        }
-      }
+  
+    if map.JSON["lecture_files.file"] as? String != nil {
+      lectureFileUrlString <- map["lecture_files.file"]
     }
     
-    
-    
-    // Slides
-    if let slidesData = map.JSON["slides"] as? [JSON] {
-      for data in slidesData {
-        if let slide = Mapper<Slide>().map(JSON: data) {
-          do {
-            let realm = try Realm()
-            try realm.write {
-              realm.add(slide, update: true)
-            }
-            
-            if !slides.contains(slide) {
-              slides.append(slide)
-            }
-          } catch let err {
-            // Implement error catching
-          }
-        }
-      }
+    if map.JSON["slides"] as? [JSON] != nil {
+      slides <- (map["slides"], ListTransform<Slide>())
     }
-    
   }
 }

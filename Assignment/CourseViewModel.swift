@@ -13,16 +13,14 @@ import then
 class CourseViewModel {
   // MARK: Public Variables
   
-  var update: () -> Void = {
-    print("===== UPDATE BLOCK SHOULD BE REPLACES =====")
-  }
+  var update: () -> Void = {print("===== UPDATE BLOCK SHOULD BE REPLACES =====")}
   
   var title: String {
     return course.title
   }
   
   var professor: String {
-    return "This should come from Course Model. Update Realm!"
+    return course.professorName
   }
   
   var dateRange: String {
@@ -36,30 +34,21 @@ class CourseViewModel {
 //      let image = UIImage(
   }
   
-  var numberOfModules: Int {
-    return course.courseModules.count
-  }
+
   
   // MARK: - Private Variables
-  private let courseManager = CourseManager()
-  var persistedCourses = Realm.shared.objects(Course.self)
+  fileprivate let courseManager = CourseManager()
+  fileprivate var persistedCourses = Realm.shared.objects(Course.self)
   var course: Course {
     return persistedCourses.first ?? Course()
   }
   
+  var modules: List<Module> {
+    return course.courseModules.filter { $0.segments.count > 0 }
+  }
   
   // MARK: - Public Methods
-  func numberOfSegments(module: Int) -> Int {
-    return course.courseModules[module].segments.count
-  }
-  
-  func moduleLabel(for index: Int) -> String {
-    return course.courseModules[index].label
-  }
-  
-  func segment(module: Int, index: Int) -> LectureSegment {
-    return course.courseModules[module].segments[index]
-  }
+
   
   func retrieveCourse() {
     courseManager.retrieveCourse().finally { [weak self] in
@@ -67,35 +56,7 @@ class CourseViewModel {
       this.update()
     }
   }
-  
-  
-//  // MARK: - Public Variables
-//  var email: String = ""
-//  var password: String = ""
-//
-//  var buttonIsEnabled: Bool {
-//    return emailIsValid && passwordIsValid
-//  }
-//
-//  // MARK: - Private Variables
-//  private let authenticationManager = AuthenticationManager()
-//
-//  private var emailIsValid: Bool {
-//    let isLongEnough = email.count >= 8
-//    return isLongEnough// && containsEmailSymbols
-//  }
-//  private var passwordIsValid: Bool {
-//    let isLongEnough = password.count >= 8
-//    return isLongEnough// && containsMixedCase
-//  }
-//
-//  // Methods
-//
-//  public func login() {
-//    authenticationManager.login(email: email, password: password)
-//      .finally(transitionToCourseScreen)
-//  }
-//
+
 //  private func transitionToCourseScreen() {
 //    let storyboard = UIStoryboard(name: "App", bundle: Bundle.main)
 //    let viewController = storyboard.instantiateInitialViewController()!
@@ -103,4 +64,25 @@ class CourseViewModel {
 //    appDelegate.window!.rootViewController = viewController
 //    appDelegate.window!.makeKeyAndVisible()
 //  }
+}
+
+// MARK: - UITableView Datasource
+extension CourseViewModel {
+  
+  var numberOfModules: Int {
+    return modules.count
+  }
+  
+  func numberOfSegments(module: Int) -> Int {
+    return modules[module].segments.count
+    //    return course.courseModules[module].segments.count
+  }
+  
+  func segment(module: Int, index: Int) -> LectureSegment {
+    return modules[module].segments[index]
+  }
+  
+  func moduleLabel(for index: Int) -> String {
+    return modules[index].title
+  }
 }

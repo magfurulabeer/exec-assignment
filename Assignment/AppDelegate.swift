@@ -22,10 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     
     let config = Realm.Configuration(
-      schemaVersion: 4,
+      schemaVersion: 7,
       
       migrationBlock: { migration, oldSchemaVersion in
-        if (oldSchemaVersion < 4) {}
+        if (oldSchemaVersion < 7) {}
     })
     
     // Tell Realm to use this new configuration object for the default Realm

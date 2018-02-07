@@ -12,6 +12,8 @@ target 'Assignment' do
   pod 'thenPromise'
   pod 'Bond'
   pod 'ObjectMapper'
+  pod "ObjectMapper+Realm"
+
   
   target 'AssignmentTests' do
     inherit! :search_paths

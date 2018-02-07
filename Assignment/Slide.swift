@@ -43,6 +43,8 @@ class Slide: Object, Mappable {
   // MARK: - Mapping
   
   func mapping(map: Map) {
+    print(">> Slide - \(map.JSON["id"] as? String ?? "--Failed--")")
+
     id <- map["id"]
     image <- map["image"]
     startAt <- map["start_at"]

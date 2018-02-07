@@ -43,13 +43,19 @@ class CourseManager {
         return
       }
       
+
       let realm = try! Realm()
       try! realm.write {
         realm.add(course, update: true)
       }
-//      this.persistCourse(course)
-      print("-------------")
-      print(course)
+    }
+  }
+  
+  func retrieveLectureSegment() -> Promise<Void> {
+    return async { [weak self] in
+      guard let this = self, let userToken = this.keychain[Constants.Params.userToken] else { fatalError() }
+
+      
     }
   }
   

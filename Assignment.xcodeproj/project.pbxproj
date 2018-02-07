@@ -176,9 +176,17 @@
 			isa = PBXGroup;
 			children = (
 				23A21DB1202A390500525C8D /* CourseViewController.swift */,
-				23A21DB4202A414F00525C8D /* CourseViewModel.swift */,
+				23A21DB8202A72EB00525C8D /* View Models */,
 			);
 			name = Course;
+			sourceTree = "<group>";
+		};
+		23A21DB8202A72EB00525C8D /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				23A21DB4202A414F00525C8D /* CourseViewModel.swift */,
+			);
+			name = "View Models";
 			sourceTree = "<group>";
 		};
 		23D1C97F2028E4B9004EE76B /* Networking */ = {
@@ -495,6 +503,7 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -509,6 +518,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",

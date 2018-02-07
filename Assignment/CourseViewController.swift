@@ -28,9 +28,8 @@ class CourseViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewModel.retrieveCourse()
     viewModel.update = updateView
-    print(viewModel.course)
+    viewModel.retrieveCourse()
   }
 
   // MARK: - Table view data source
@@ -47,7 +46,7 @@ class CourseViewController: UITableViewController {
     let segment = viewModel.segment(module: indexPath.section, index: indexPath.row)
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-    cell.textLabel?.text = segment.label
+    cell.textLabel?.text = segment.name
 
     return cell
   }
@@ -57,9 +56,7 @@ class CourseViewController: UITableViewController {
   }
 
   func updateView() {
-
     OperationQueue.main.addOperation { [weak self] in
-      print("updating view")
       guard let this = self else { return }
       this.titleLabel.text = this.viewModel.title
       this.professorLabel.text = this.viewModel.professor
