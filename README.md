@@ -48,3 +48,13 @@ All the models in the app are Realm Objects and conform to the Mappable protocol
 The majority of the styling was done in Storyboard. The idea is that there would be multiple storyboards for multiple flows. Currently there are only 2: Login and App. If the App had a TabBar, this figure could have easily been 5 or 6. While the storyboards are being implemented, the actual loading of the View Controllers are done in the Coordinator.
 
 All View Controllers have an associated View Model that contains the state, interaction logic, and presentation logic. The View Model is injected into the View Controller in the Coordinator.
+
+## View Model
+Any state (The email and password values of the fields in the login screen), presentation logic (Showing dates in MM/DD/YYYY format), and interaction logic (Navigating to a different View Controller on tap) is abstracted away to the View Model.
+
+Every View Model is injected with a Coordinator and occasionally injected with an update function directly from the View Controller. The actual navigation is delegated to the Coordinator. 
+
+## Coordinator
+The Coordinator handles the navigation of the app. Each View Controller and View Model pair is separated into their own Scene. The Coordinator can then push, pop, or change root to the proper scene (No modals in this app). The Coordinator is owned by the AppDelegate. References to it are passed to every View Model instantiated. 
+
+
