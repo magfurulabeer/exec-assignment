@@ -1,4 +1,4 @@
-# exec-assignment
+# exec-assignment -- INCOMPLETE
 
 ## Prerequisites
 - MacOS 10+
