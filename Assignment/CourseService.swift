@@ -20,4 +20,9 @@ class CourseService: NetworkService {
     let target = ExecOnlineAPI.getCourse(id: courseId)
     return request(target: target)
   }
+  
+  func getCourseLectureSegments(courseId: Int, id: Int) -> Promise<LectureSegment> {
+    let target = ExecOnlineAPI.getCourseLectureSegments(courseId: courseId, id: id)
+    return requestThenMap(target: target)
+  }
 }

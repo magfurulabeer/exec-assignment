@@ -26,7 +26,7 @@ class UserService: NetworkService {
   
   // Currently should only get first course
   func getUserCourses(userToken: String) -> Promise<[JSON]> {
-    let target = ExecOnlineAPI.getUserCourses(userToken: userToken)
+    let target = ExecOnlineAPI.getUserCourses()
     return requestArray(target: target)
   }
 

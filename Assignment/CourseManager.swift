@@ -51,12 +51,8 @@ class CourseManager {
     }
   }
   
-  func retrieveLectureSegment() -> Promise<Void> {
-    return async { [weak self] in
-      guard let this = self, let userToken = this.keychain[Constants.Params.userToken] else { fatalError() }
-
-      
-    }
+  func retrieveLectureSegment(courseId: Int, id: Int) -> Promise<LectureSegment> {
+    return courseService.getCourseLectureSegments(courseId: courseId, id: id)
   }
   
 }

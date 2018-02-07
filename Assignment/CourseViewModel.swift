@@ -13,7 +13,7 @@ import then
 class CourseViewModel {
   // MARK: Public Variables
   
-  var update: () -> Void = {print("===== UPDATE BLOCK SHOULD BE REPLACES =====")}
+  var update: () -> Void = {}
   
   var title: String {
     return course.title

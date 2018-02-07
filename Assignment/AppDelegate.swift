@@ -41,6 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let realm = try! Realm()
     if realm.objects(User.self).first != nil {
       
+      if window == nil {
+        window = UIWindow(frame: UIScreen.main.bounds)
+      }
+      
       let storyboard = UIStoryboard(name: "App", bundle: Bundle.main)
       let viewController = storyboard.instantiateInitialViewController()!
       window!.rootViewController = viewController

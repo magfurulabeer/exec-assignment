@@ -17,11 +17,11 @@ enum ExecOnlineAPI {
   
   // MARK: - User
   case getUser(userToken: String)
-  case getUserCourses(userToken: String)
+  case getUserCourses()
   
   // MARK: - Courses
   case getCourse(id: Int)
-  case getCourseLectureSegments(courseId: String, id: String)
+  case getCourseLectureSegments(courseId: Int, id: Int)
 }
 
 // MARK: - TargetType Protocol Implementation
@@ -99,7 +99,7 @@ extension ExecOnlineAPI: TargetType {
               Constants.Params.userEmail: credentials.email,
               Constants.Params.userPassword: credentials.password
       ]
-    case .getUser(let userToken), .getUserCourses(let userToken):
+    case .getUser(let userToken):
       return ["Content-type": "application/json",
               "Accept": "application/json",
               Constants.Params.partnerToken: Constants.Keys.apiPartnerToken,

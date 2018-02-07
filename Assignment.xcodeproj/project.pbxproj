@@ -23,6 +23,10 @@
 		23A21DB2202A390500525C8D /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DB1202A390500525C8D /* CourseViewController.swift */; };
 		23A21DB5202A414F00525C8D /* CourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DB4202A414F00525C8D /* CourseViewModel.swift */; };
 		23A21DB7202A540C00525C8D /* Realm+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DB6202A540C00525C8D /* Realm+Extensions.swift */; };
+		23A21DBC202A96F100525C8D /* LectureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DBB202A96F100525C8D /* LectureViewController.swift */; };
+		23A21DBF202A981C00525C8D /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DBE202A981C00525C8D /* PlayerView.swift */; };
+		23A21DC3202A9FD800525C8D /* LectureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DC2202A9FD800525C8D /* LectureViewModel.swift */; };
+		23A21DC5202AA15A00525C8D /* UIView+SelectorFreeGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A21DC4202AA15A00525C8D /* UIView+SelectorFreeGestures.swift */; };
 		23B05B7D2029638C00F95ED3 /* CourseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B05B7C2029638C00F95ED3 /* CourseService.swift */; };
 		23D1C9812028E4D4004EE76B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C9802028E4D4004EE76B /* NetworkError.swift */; };
 		23D1C9842028F080004EE76B /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C9832028F080004EE76B /* TokenService.swift */; };
@@ -67,6 +71,10 @@
 		23A21DB1202A390500525C8D /* CourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
 		23A21DB4202A414F00525C8D /* CourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewModel.swift; sourceTree = "<group>"; };
 		23A21DB6202A540C00525C8D /* Realm+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extensions.swift"; sourceTree = "<group>"; };
+		23A21DBB202A96F100525C8D /* LectureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureViewController.swift; sourceTree = "<group>"; };
+		23A21DBE202A981C00525C8D /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		23A21DC2202A9FD800525C8D /* LectureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureViewModel.swift; sourceTree = "<group>"; };
+		23A21DC4202AA15A00525C8D /* UIView+SelectorFreeGestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SelectorFreeGestures.swift"; sourceTree = "<group>"; };
 		23B05B7C2029638C00F95ED3 /* CourseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseService.swift; sourceTree = "<group>"; };
 		23D1C9802028E4D4004EE76B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		23D1C9832028F080004EE76B /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
@@ -176,6 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				23A21DB1202A390500525C8D /* CourseViewController.swift */,
+				23A21DBB202A96F100525C8D /* LectureViewController.swift */,
+				23A21DBD202A980D00525C8D /* Views */,
 				23A21DB8202A72EB00525C8D /* View Models */,
 			);
 			name = Course;
@@ -185,8 +195,17 @@
 			isa = PBXGroup;
 			children = (
 				23A21DB4202A414F00525C8D /* CourseViewModel.swift */,
+				23A21DC2202A9FD800525C8D /* LectureViewModel.swift */,
 			);
 			name = "View Models";
+			sourceTree = "<group>";
+		};
+		23A21DBD202A980D00525C8D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				23A21DBE202A981C00525C8D /* PlayerView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		23D1C97F2028E4B9004EE76B /* Networking */ = {
@@ -237,6 +256,7 @@
 				23D1C9852028F1F2004EE76B /* GlobalFunctions.swift */,
 				239EF9D320292A4B00E9FD6A /* UIColor+Extensions.swift */,
 				23A21DB6202A540C00525C8D /* Realm+Extensions.swift */,
+				23A21DC4202AA15A00525C8D /* UIView+SelectorFreeGestures.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -553,14 +573,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				23A21DA42029774500525C8D /* LectureFile.swift in Sources */,
+				23A21DBC202A96F100525C8D /* LectureViewController.swift in Sources */,
 				2392BE9120290E4000C6AAC2 /* NetworkService.swift in Sources */,
 				239EF9D2202924C500E9FD6A /* Course.swift in Sources */,
 				23A21DAE202A2D1900525C8D /* CourseManager.swift in Sources */,
 				23D1C9842028F080004EE76B /* TokenService.swift in Sources */,
 				23A21DB7202A540C00525C8D /* Realm+Extensions.swift in Sources */,
 				8B3497B32027D2BC00AAEF98 /* Client.swift in Sources */,
+				23A21DBF202A981C00525C8D /* PlayerView.swift in Sources */,
+				23A21DC5202AA15A00525C8D /* UIView+SelectorFreeGestures.swift in Sources */,
 				2392BE8E20290B5F00C6AAC2 /* UserService.swift in Sources */,
 				23A21DA22029768A00525C8D /* LectureSegment.swift in Sources */,
+				23A21DC3202A9FD800525C8D /* LectureViewModel.swift in Sources */,
 				239EF9DE20294E9300E9FD6A /* LoginViewModel.swift in Sources */,
 				23A21DA8202A0DA000525C8D /* Module.swift in Sources */,
 				23D1C9862028F1F2004EE76B /* GlobalFunctions.swift in Sources */,
