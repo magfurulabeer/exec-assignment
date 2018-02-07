@@ -62,5 +62,10 @@ The Coordinator handles the navigation of the app. Each View Controller and View
 Networking is separated into 3 components: The Client, The Services, The Managers. 
 
 ### Client
-The Client is the main component of the Networking Layer. The Client will be used to make the actual network calls. The Client in this app is a Moya Provider. Moya has a clean and consistent interface for creating networking layers.
+The Client is the main component of the Networking Layer. The Client will be used to make the actual network calls. The Client in this app is a Moya Provider. Moya has a clean and consistent interface for creating networking layers. Only services have access to the Client.
 
+### Services
+Each set of network calls is grouped by their path. Each group is a Network Service. It was deliberately separated to reflect the Swagger Docs. This project contains a TokenService, UserService, and CourseService. Each task in a service will return a Promise with the JSON Dictionary/Array or optionally a selected value or mapped Model object. Only Managers have access to the Services.
+
+### Manager
+The Manager is the "public" part of the Network Layer. It usually includes an intersection between the Networking Layer and the Persistence layer. View Models use Managers to do calls and sets of calls. Unlike Services that have many individual calls , a Manager has many different "orchestras." The manager orchestrates a series of calls an actions that may span multiple services and affect other layers of the app. An example would be the LoginManager. It has a function called login(email:password:) that requests a token, saves the token to the Keychain, fetches the User, and then saves the User object into Realm. To do this, it uses 2 Network Services, the Keychain, and Realm. This exact method is used by the LoginViewModel when the Login button is tapped.
