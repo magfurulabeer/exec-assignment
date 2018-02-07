@@ -23,3 +23,23 @@
 - Kingfisher - For downloading and caching images
 - KeychainAccess - For simple Keychain use
 - Then - For Promises and Async Management
+
+## General Architecture
+The architecture used in this app is MVVM-C (Model-View-ViewModel-Coordinator). There was a deliberate decision not to use RxSwift as it can be difficult to read for those unfamiliar with it's syntax and concepts. It also does not support Swift 4 at the moment.
+
+## Architectural Motifs
+Many of the decisions made when architecting this app were based on the following 3 themes:
+1. Backend Frontend Synchronization
+- It makes sense to attempt to keep the frontend as faithful to the backend. It's difficult to work with frontend who's models do not resemble the backend models
+2. Balancing Separation of Concerns with Minimizing Boilerplate and Overhead
+- Separation of Concerns is a crucial design principle for improving maintainability but when overdone it actually severly diminishes maintainability
+3. Ease of File Navigation
+- Extending the last point, when separated correctly with a solid system in place, it becomes significantly easier to find which file contains the desired code
+
+## Models
+All the models in the app are Realm Objects and conform to the Mappable protocol. This means that it can easily be created given the proper JSON. The model properties were kept as faithful as possible to the recieved JSON (e.g. current_segment became currentSegment).
+1. User
+2. Course
+3. Module
+4. LectureSegment
+5. Slide
