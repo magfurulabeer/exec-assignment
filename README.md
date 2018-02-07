@@ -9,7 +9,7 @@
 - Assuming you're on a Mac with Xcode 9, start by cloning the repo
 - Once cloned, run 'pod install' in the projects root directory
 - Open Assignment.xcworkspace
-- After clicking the topmost directory on the right (Assignment with blue icon), you'll see in the EditorView the Project Settings. Change the bundle identifier to your personal or commercial  
+- After clicking the topmost directory on the right (Assignment with blue icon), you'll see in the EditorView the Project Settings. Change the bundle identifier to your personal or commercial identifier (com.yourcompanyname.Assignment)
 - Cmd-R to Build and Run
 
 ## Running Tests
