@@ -9,6 +9,7 @@
 - Assuming you're on a Mac with Xcode 9, start by cloning the repo
 - Once cloned, run 'pod install' in the projects root directory
 - Open Assignment.xcworkspace
+- After clicking the topmost directory on the right (Assignment with blue icon), you'll see in the EditorView the Project Settings. Change the bundle identifier to your personal or commercial  
 - Cmd-R to Build and Run
 
 ## Running Tests
@@ -56,5 +57,4 @@ Every View Model is injected with a Coordinator and occasionally injected with a
 
 ## Coordinator
 The Coordinator handles the navigation of the app. Each View Controller and View Model pair is separated into their own Scene. The Coordinator can then push, pop, or change root to the proper scene (No modals in this app). The Coordinator is owned by the AppDelegate. References to it are passed to every View Model instantiated. 
-
 
